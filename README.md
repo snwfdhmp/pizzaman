@@ -44,7 +44,7 @@ Available cheeses :
 
 ## Ask questions
 
-You can ask question to the pizzaman, as simply as `curl localhost:9876/yourQuestionFormat`
+You can ask questions to the pizzaman, as simply as `curl localhost:9876/yourQuestionFormat`
 
 
 | Question | Format |

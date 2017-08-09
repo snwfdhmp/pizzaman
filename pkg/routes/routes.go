@@ -11,8 +11,8 @@ func Init() *httprouter.Router {
 
 	r.GET("/order/:sauce/:meat/:cheese", orders.Take)
 
-	//r.GET("/whatsaucesdoyouhave", fridge.WhatSauces)
-	//r.GET("/whatmeatsdoyouhave", fridge.WhatMeats)
+	r.GET("/whatsaucesdoyouhave", questions.WhatSauces)
+	r.GET("/whatmeatsdoyouhave", questions.WhatMeats)
 	r.GET("/whatcheesesdoyouhave", questions.WhatCheeses)
 
 	return r
