@@ -16,7 +16,10 @@ func main() {
 	var cheeses []string
 
 	sauces = append(sauces, "tomato")
+	sauces = append(sauces, "ketchup")
+
 	meats = append(meats, "chicken")
+
 	cheeses = append(cheeses, "goat")
 
 	fridge.FillSauces(sauces)
