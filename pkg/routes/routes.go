@@ -14,6 +14,7 @@ func Init() *httprouter.Router {
 	r.GET("/whatsaucesdoyouhave", questions.WhatSauces)
 	r.GET("/whatmeatsdoyouhave", questions.WhatMeats)
 	r.GET("/whatcheesesdoyouhave", questions.WhatCheeses)
+	r.GET("/howismypizza/:ticket", questions.HowIsMyPizza)
 
 	return r
 }

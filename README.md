@@ -42,6 +42,31 @@ Available cheeses :
 	- cheddar
 	- romano
 
+## See your pizza's state
+
+Ask the pizzaman by send a request on `howismypizza/yourTicketNumber`
+
+Example :
+
+```
+$ curl 0:9876/order/supreme/chicken/goat
+{"message":"Your order has been taken","pizza":{"sauce":"supreme","meat":"chicken","cheese":"goat"},"ticket":"1fb1"}
+```
+
+My ticket number is 1fb1, so let's ask the pizzaman
+
+```
+$ curl 0:9876/howismypizza/1fb1
+pending
+```
+
+A few seconds later ...
+
+```
+curl 0:9876/howismypizza/1fb1
+prepared
+```
+
 ## Ask questions
 
 You can ask questions to the pizzaman, as simply as `curl localhost:9876/yourQuestionFormat`

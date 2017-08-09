@@ -3,6 +3,7 @@ package questions
 import (
 	"github.com/julienschmidt/httprouter"
 	"github.com/snwfdhmp/pizzaman/pkg/fridge"
+	"github.com/snwfdhmp/pizzaman/pkg/orders"
 	"io"
 	"net/http"
 )
@@ -26,4 +27,10 @@ func WhatMeats(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 
 func WhatCheeses(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	list(w, fridge.Cheeses)
+}
+
+func HowIsMyPizza(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	state := orders.State(ps.ByName("ticket"))
+
+	io.WriteString(w, state)
 }

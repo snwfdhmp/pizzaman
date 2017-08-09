@@ -14,7 +14,8 @@ import (
 )
 
 var (
-	orders Orders
+	toBePrepared OrderChan
+	orders       Orders
 )
 
 type OrderSuccessResp struct {
@@ -29,10 +30,8 @@ type Order struct {
 	Prepared bool
 }
 
-type Orders chan Order
-
-func (o Orders) Add(order Order) {
-}
+type Orders []Order
+type OrderChan chan Order
 
 func (r OrderSuccessResp) Write(w io.Writer) {
 	b, _ := json.Marshal(r)
@@ -61,7 +60,8 @@ func Take(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
 	order := Order{Pizza: p, Ticket: t}
 
-	orders.Prepare(order)
+	orders = append(orders, order)
+	toBePrepared.Prepare(order)
 }
 
 func randTicket() string {
@@ -71,26 +71,51 @@ func randTicket() string {
 }
 
 func (o *Order) Prepare() {
-	err := wait("3s")
+	err := wait("6s")
 	if err != nil {
 		log.Println(err.Error())
 	} else {
 		log.Println(o.Ticket, "finished")
-		o.Prepared = true
+		MarkAsPrepared(o.Ticket)
 	}
 }
 
-func (o Orders) Prepare(order Order) {
+func (o OrderChan) Prepare(order Order) {
 	o <- order
 	log.Println("Command", order.Ticket, order.Pizza)
 }
 
 func PrepareAll() {
-	orders = make(chan Order)
-	for o := range orders {
-		go func(o Order) {
+	toBePrepared = make(chan Order)
+	for o := range toBePrepared {
+		go func(o *Order) {
 			o.Prepare()
-		}(o)
+		}(&o)
+	}
+}
+
+func State(ticket string) string {
+	for _, o := range orders {
+		if o.Ticket != ticket {
+			continue
+		}
+
+		if o.Prepared {
+			return "prepared"
+		}
+
+		return "pending"
+	}
+	return "not found"
+}
+
+func MarkAsPrepared(ticket string) {
+	for i, o := range orders {
+		if o.Ticket != ticket {
+			continue
+		}
+
+		orders[i].Prepared = true
 	}
 }
 
