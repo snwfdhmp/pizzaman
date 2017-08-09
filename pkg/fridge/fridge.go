@@ -1,13 +1,13 @@
 package fridge
 
 var (
-	sauces  []string
-	meats   []string
-	cheeses []string
+	Sauces  []string
+	Meats   []string
+	Cheeses []string
 )
 
 func HasSauce(s string) bool {
-	for _, sauce := range sauces {
+	for _, sauce := range Sauces {
 		if sauce == s {
 			return true
 		}
@@ -16,7 +16,7 @@ func HasSauce(s string) bool {
 }
 
 func HasMeat(s string) bool {
-	for _, meat := range meats {
+	for _, meat := range Meats {
 		if meat == s {
 			return true
 		}
@@ -25,7 +25,7 @@ func HasMeat(s string) bool {
 }
 
 func HasCheese(s string) bool {
-	for _, cheese := range cheeses {
+	for _, cheese := range Cheeses {
 		if cheese == s {
 			return true
 		}
@@ -35,18 +35,18 @@ func HasCheese(s string) bool {
 
 func FillSauces(s []string) {
 	for _, sauce := range s {
-		sauces = append(sauces, sauce)
+		Sauces = append(Sauces, sauce)
 	}
 }
 
 func FillMeats(s []string) {
 	for _, meat := range s {
-		meats = append(meats, meat)
+		Meats = append(Meats, meat)
 	}
 }
 
 func FillCheeses(s []string) {
 	for _, cheese := range s {
-		cheeses = append(cheeses, cheese)
+		Cheeses = append(Cheeses, cheese)
 	}
 }

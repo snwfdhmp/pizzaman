@@ -17,10 +17,6 @@ var (
 func main() {
 	log.Println("Welcome to your pizzeria")
 
-	meats = append(meats, "chicken")
-
-	cheeses = append(cheeses, "goat")
-
 	log.Println("Buying sauces")
 	buySauces()
 

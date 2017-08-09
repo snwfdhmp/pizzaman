@@ -42,3 +42,13 @@ Available cheeses :
 	- cheddar
 	- romano
 
+## Ask questions
+
+You can ask question to the pizzaman, as simply as `curl localhost:9876/yourQuestionFormat`
+
+
+| Question | Format |
+| --- | --- |
+|What sauces do you have ? | whatsaucesdoyouhave |
+|What meats do you have ? | whatmeatsdoyouhave |
+|What cheeses do you have ? | whatcheesesdoyouhave |
