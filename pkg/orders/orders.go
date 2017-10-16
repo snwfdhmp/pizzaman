@@ -5,12 +5,13 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/julienschmidt/httprouter"
-	"github.com/snwfdhmp/pizzaman/pkg/pizzas"
 	"io"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/julienschmidt/httprouter"
+	"github.com/snwfdhmp/pizzaman/pkg/pizzas"
 )
 
 var (

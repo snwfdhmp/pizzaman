@@ -1,11 +1,12 @@
 package main
 
 import (
+	"log"
+	"net/http"
+
 	"github.com/snwfdhmp/pizzaman/pkg/fridge"
 	"github.com/snwfdhmp/pizzaman/pkg/orders"
 	"github.com/snwfdhmp/pizzaman/pkg/routes"
-	"log"
-	"net/http"
 )
 
 var (

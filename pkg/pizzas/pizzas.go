@@ -3,8 +3,9 @@ package pizzas
 import (
 	"encoding/json"
 	"errors"
-	"github.com/snwfdhmp/pizzaman/pkg/fridge"
 	"io"
+
+	"github.com/snwfdhmp/pizzaman/pkg/fridge"
 )
 
 type Pizza struct {
